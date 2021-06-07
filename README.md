@@ -1,6 +1,6 @@
 # NetworkVote
 
-**Plugin to help sychronize vote reward claiming across network.** Database configurations can be found in `config.yml`.
+**Synchronize vote reward claiming across network.** Database configurations can be found in `config.yml`.
 
 
 
