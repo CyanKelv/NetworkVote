@@ -28,7 +28,7 @@ The `voteOn()` function can be called to update player vote status. The function
 $api->voteOn($player, $ip, $port);
 ```
 
-###Example usage:
+### Example usage:
 ```php
 // If player voted on website but not on the server
 if($api->hasVotedOn($player, "127.0.0.1", 19132) === VotesAPI::RET_NOT_VOTED){
@@ -44,6 +44,6 @@ if($api->hasVotedOn($player, "127.0.0.1", 19132) === VotesAPI::RET_NOT_VOTED){
 ### Daily vote status reset
 Voting status will be reset daily on 12:00:00AM EDT (Eastern Daylight Time)
 
-#Drawback
+# Drawback
 * Only support voting synchronisation on one voting website. Eg. will not work when the vote rewards can be claimed multiple time on one server.
 * Timezone of the voting website might differ from the timezone on server.
