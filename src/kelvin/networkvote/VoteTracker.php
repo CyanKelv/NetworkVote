@@ -45,6 +45,28 @@ class VoteTracker extends PluginBase{
     }
 
     /**
+     * Claim player vote, returns true on successful claim and false otherwise
+     *
+     * @param Player $player
+     * @param $ip
+     * @param $port
+     * @return bool
+     */
+    public function claimVote($player, $ip, $port) : bool{
+        $name = $player->getLowerCaseName();
+        $result = $this->hasVotedOn($player, $ip, $port);
+        if($result === self::RET_NOT_VOTED){
+            $this->voteOn($player, $ip, $port);
+            return true;
+        } else if($result === self::RET_VOTED){
+            return false;
+        } else if($result === self::RET_INVALID){
+            $this->getLogger()->alert($player->getName() . " vote tracking data is not loaded!");
+            return false;
+        }
+    }
+
+    /**
      * Check if player had voted on specific ip and port
      *
      * @param Player $player
