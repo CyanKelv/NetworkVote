@@ -28,14 +28,19 @@ The `voteOn()` function can be called to update player vote status. The function
 $api->voteOn($player, $ip, $port);
 ```
 
+### All-in-one vote tracking
+Automatically checks and update voting status on function call, return true on successful claim and false otherwise
+```php
+/** @var \pocketmine\Player $player */
+$api->claimVote($player, $ip, $port);
+```
+
 ### Example usage:
 ```php
 // If player voted on website but not on the server
-if($api->hasVotedOn($player, "127.0.0.1", 19132) === VotesAPI::RET_NOT_VOTED){
+if($api->claimVote($player, $ip, $port)){
     // Reward player here
     $player->sendMessage("Thank you for voting!");
-    // Update player's vote status
-    $api->voteOn($player, "127.0.0.1", 19132);
 } else {
     $player->sendMessage("You had claimed your rewards!");
 }
