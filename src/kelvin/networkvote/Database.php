@@ -16,7 +16,7 @@ class Database {
     /** @var DataConnector */
     private $db;
 
-    public function __construct(VotesAPI $plugin){
+    public function __construct(VoteTracker $plugin){
         $this->plugin = $plugin;
         $this->initializeDatabase();
     }

@@ -1,5 +1,5 @@
 name: NetworkVote
-main: kelvin\networkvote\VotesAPI
+main: kelvin\networkvote\VoteTracker
 version: 1.0
 api: 3.19.2
 author: Kelvinlolz

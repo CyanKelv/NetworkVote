@@ -10,7 +10,7 @@ use pocketmine\event\player\PlayerQuitEvent;
 
 class EventListener implements Listener {
 
-    public function __construct(VotesAPI $plugin){
+    public function __construct(VoteTracker $plugin){
         $this->plugin = $plugin;
     }
 

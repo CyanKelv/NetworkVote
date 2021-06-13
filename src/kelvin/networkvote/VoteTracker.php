@@ -7,14 +7,14 @@ namespace kelvin\networkvote;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 
-class VotesAPI extends PluginBase{
+class VoteTracker extends PluginBase{
 
     const RET_NOT_VOTED = 0;
     const RET_VOTED = 1;
     // Data not loaded
     const RET_INVALID = 2;
 
-    /** @var VotesAPI|null */
+    /** @var VoteTracker|null */
     private static $instance = null;
     /** @var Database */
     private $database;
@@ -36,7 +36,7 @@ class VotesAPI extends PluginBase{
         $this->getLogger()->info("NetworkVote enabled!");
 	}
 
-	public static function getInstance() : ?VotesAPI{
+	public static function getInstance() : ?VoteTracker{
 	    return self::$instance;
     }
 
