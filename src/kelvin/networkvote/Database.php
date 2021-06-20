@@ -76,10 +76,11 @@ class Database {
     }
 
     /**
-     * Clean up player data after a specific time
+     * Clean up player data daily on reset
      */
     public function cleanData(){
-        $this->db->executeSelect("network.get_vote_by_date", ["timestamp" => time()], function(array $rows){
+        $resetTimestamp = (new \DateTime("today", $this->plugin->timezone))->getTimestamp();
+        $this->db->executeSelect("network.get_vote_by_date", ["timestamp" => $resetTimestamp], function(array $rows){
             foreach($rows as $result){
                 $this->db->executeChange("network.delete_vote", ["name" => $result["name"]]);
             }

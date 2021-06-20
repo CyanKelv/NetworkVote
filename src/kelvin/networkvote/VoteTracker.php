@@ -32,6 +32,7 @@ class VoteTracker extends PluginBase{
 		$this->database = new Database($this);
 		// Timezone following voting site
 		$this->timezone = new \DateTimeZone("EST5EDT");
+        $this->database->cleanData();
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getLogger()->info("NetworkVote enabled!");
 	}
@@ -127,7 +128,6 @@ class VoteTracker extends PluginBase{
                     $resetTimestamp = (new \DateTime("today", $this->timezone))->getTimestamp();
                     if($resetTimestamp > $data["lastupdated"]){
                         $this->loaded[$name] = [];
-                        //$this->getDatabase()->updateData($player, $this->loaded[$name], $now->getTimestamp());
                         $this->getDatabase()->removeData($player);
                     }
                 }
